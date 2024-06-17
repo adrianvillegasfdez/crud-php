@@ -9,7 +9,7 @@ DB_PASSWORD: Contraseña del usuario e la BD
 include_once("config.php");
 
 //Consulta de selección. Selecciona todos los usuarios ordenados de manera descendente por el campo id
-$result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
+$result = mysqli_query($mysqli, "SELECT * FROM pilotos ORDER BY id");
 
 ?>
 
@@ -20,7 +20,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<title>Panel de control</title>
 	<!--bootstrap-->
-	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<!--
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	-->	
@@ -32,7 +32,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
 -->
 <div>
 	<header>
-		<!--<h1>Panel de Control</h1>-->
+	<h1>Listado de pilotos</h1>
 	</header>
 
 	<main>
@@ -40,14 +40,18 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
 		<li><a href="index.php">Inicio</a></li>
 		<li><a href="add.html">Alta</a></li>
 	</ul>
-	<!--<h2>Listado de trabajador@s</h2>-->
-	<table border="1">
+	<h2>Parrilla de Pilotos</h2>
+	<table class="table table-striped" border="1">
 	<thead>
 		<tr>
 			<th>Nombre</th>
-			<th>Apellido</th>
 			<th>Edad</th>
-			<th>Acciones</th>
+			<th>Nacionalidad</th>
+			<th>Escuderia</th>
+			<th>Número</th>
+			<th>Victorias</th>
+			<th>Campeonatos</th>
+			<th>Estado</th>
 		</tr>
 	</thead>
 	<tbdody>
@@ -69,9 +73,14 @@ $res["age"] = "23";
 	while($res = mysqli_fetch_array($result)) {
 		//se puede hacer con consultas preparadas
 		echo "<tr>\n";
-		echo "<td>".$res['name']."</td>\n";
-		echo "<td>".$res['surname']."</td>\n";
-		echo "<td>".$res['age']."</td>\n";
+		echo "<td>".$res['nombre']."</td>\n";
+		echo "<td>".$res['edad']."</td>\n";
+		echo "<td>".$res['nacionalidad']."</td>\n";
+		echo "<td>".$res['escuderia']."</td>\n";
+		echo "<td>".$res['numero']."</td>\n";
+		echo "<td>".$res['victorias']."</td>\n";
+		echo "<td>".$res['campeonatos']."</td>\n";
+		echo "<td>".$res['estado']."</td>\n";
 		/*echo "<td>".$res[2]."</td>\n";
 		echo "<td>".$res[1]."</td>\n";
 		echo "<td>".$res[3]."</td>\n";*/
