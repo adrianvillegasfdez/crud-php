@@ -2,7 +2,7 @@ version: '3'
 
 services: 
   apache:
-    image: adrian1711/pilotos-crud:1.0
+    image: adrian1711/crud-pilotos:1.0
     ports: 
       - 80:80
     environment: 
